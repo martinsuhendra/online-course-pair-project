@@ -1,0 +1,26 @@
+{
+  "name": "online-course-pair-project",
+  "version": "1.0.0",
+  "description": "pair project phase 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/martinsuhendra/online-course-pair-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martinsuhendra/online-course-pair-project/issues"
+  },
+  "homepage": "https://github.com/martinsuhendra/online-course-pair-project#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "pg": "^7.9.0",
+    "sequelize": "^5.2.0"
+  }
+}
