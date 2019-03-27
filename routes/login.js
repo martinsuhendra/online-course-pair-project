@@ -20,7 +20,7 @@ router.post('/', (req, res)=> {
                 req.session.login = {
                     id: student.id,
                     email: student.email,
-                    role: student.role
+                    role: req.body.role
                 }
                 res.locals.login = req.session.login
             }
@@ -42,7 +42,7 @@ router.post('/', (req, res)=> {
                 req.session.login = {
                     id: teacher.id,
                     email: teacher.email,
-                    role: teacher.role
+                    role: req.body.role
                 }
                 res.locals.login = req.session.login
             }

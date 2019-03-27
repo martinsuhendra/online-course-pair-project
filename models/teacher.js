@@ -76,6 +76,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   Teacher.associate = function(models) {
     // associations can be defined here
+    Teacher.belongsToMany(models.Student,{through: models.TeacherStudent})
   };
 
   Teacher.prototype.validatePassword = function (password) {

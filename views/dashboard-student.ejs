@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <% include ./partials/nav-bar.ejs %>
+    <table rules="rows" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Teacher Name</th>
+                <th>Instrument</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Give Rate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% schedules.forEach((teacher, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= teacher.Teacher.getFullName() %></td>
+                    <td><%= teacher.Teacher.instrument %></td>
+                    <td><%= teacher.date.toString().slice(0,21) %></td>
+                    <td><%= teacher.status %></td>
+                    <% if(teacher.status == 'confirmed') { %>
+                        <td><a href="/dashboard/give-score/<%= teacher.Teacher.id %>">Rate</a></td>
+                    <% } else { %>
+                        <td>No Rate</td>
+                    <% } %>
+                </tr>
+           <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
