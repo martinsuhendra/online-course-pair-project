@@ -53,5 +53,21 @@ router.get('/', (req, res)=> {
     })
 })
 
+router.post('/:id/give-rate', (req, res) => {
+    Teacher.update({
+        rating: req.body.rating
+    }, {
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(() => {
+            res.redirect('/dashboard')
+        })
+        .catch(err => {
+            res.send(err.message)
+        })
+})
+
 
 module.exports = router
