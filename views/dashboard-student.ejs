@@ -28,7 +28,16 @@
                     <td><%= teacher.date.toString().slice(0,21) %></td>
                     <td><%= teacher.status %></td>
                     <% if(teacher.status == 'confirmed') { %>
-                        <td><a href="/dashboard/give-score/<%= teacher.Teacher.id %>">Rate</a></td>
+                        <td>
+                            <form action="/dashboard/<%= teacher.Teacher.id %>/give-rate" method="post">
+                                <select name="rating">
+                                    <% for(let i = 1; i <= 5; i++) { %>
+                                        <option value="<%= i %>"><%= i %></option>
+                                    <% } %>
+                                </select>
+                                <button type="submit">Rate</button>
+                            </form>
+                        </td>
                     <% } else { %>
                         <td>No Rate</td>
                     <% } %>
