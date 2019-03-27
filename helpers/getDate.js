@@ -1,3 +1,3 @@
 module.exports = getDate = (date) => {
-    return date.slice(0, 15)
+    return date.toString().slice(0,21)
 }

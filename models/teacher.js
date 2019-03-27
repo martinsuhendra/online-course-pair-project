@@ -86,5 +86,6 @@ module.exports = (sequelize, DataTypes) => {
   Teacher.prototype.getFullName = function(){
     return `${this.first_name} ${this.last_name}`
   }
+
   return Teacher;
 };

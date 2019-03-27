@@ -21,9 +21,9 @@
                 <tr>
                     <% schedules.forEach(schedule => { %>
                         <td><%= schedule.id %></td>
-                        <td><%= schedule.Student.first_name %> <%= schedule.Student.last_name %></td>
+                        <td><%= getFullName(schedule.Student.first_name, schedule.Student.last_name) %></td>
                         <td><%= schedule.Student.gender %></td>
-                        <td><%= schedule.date.toString().slice(0,21) %></td>
+                        <td><%= getDate(schedule.date) %></td>
                         <td><%= schedule.Student.email %></td>
                         <form method="POST" action="/dashboard/<%= schedule.id %>/update-status">
                             <td>

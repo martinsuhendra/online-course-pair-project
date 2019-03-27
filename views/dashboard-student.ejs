@@ -23,9 +23,9 @@
             <% schedules.forEach((teacher, index) => { %>
                 <tr>
                     <td><%= index + 1 %></td>
-                    <td><%= teacher.Teacher.getFullName() %></td>
+                    <td><%= getFullName(teacher.Teacher.first_name, teacher.Teacher.last_name) %></td>
                     <td><%= teacher.Teacher.instrument %></td>
-                    <td><%= teacher.date.toString().slice(0,21) %></td>
+                    <td><%= getDate(teacher.date) %></td>
                     <td><%= teacher.status %></td>
                     <% if(teacher.status == 'confirmed') { %>
                         <td>

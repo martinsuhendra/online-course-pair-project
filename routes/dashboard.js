@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const {Student, Teacher, TeacherStudent}  = require('../models')
-const  getDate = require('../helpers/getDate')
+const  getFullName = require('../helpers/getFullName')
+const getDate = require('../helpers/getDate')
 
 router.get('/', (req, res)=> {
     // res.send(req.session)
@@ -14,7 +15,7 @@ router.get('/', (req, res)=> {
             }]
         })
         .then((schedules)=>{
-            res.render('dashboard-student',{schedules, getDate})
+            res.render('dashboard-student',{schedules, getFullName, getDate})
         })
         .catch((err)=> {
             res.send(err.message)
@@ -30,7 +31,7 @@ router.get('/', (req, res)=> {
         })
         .then((schedules)=> {
             // res.send(schedules)
-            res.render('dashboard-teacher',{schedules})
+            res.render('dashboard-teacher',{schedules, getFullName,getDate})
         })
     }
 
