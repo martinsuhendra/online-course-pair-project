@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teacher Dashboard</title>
+</head>
+<body>
+        <% include ./partials/nav-bar.ejs %>
+        <table rules=rows cellpadding=10>
+            <thead>
+                <th> Id</th>
+                <th> Student Name</th>
+                <th> Gender</th>
+                <th> Date</th>
+                <th> Email</th>
+                <th> Status</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <% schedules.forEach(schedule => { %>
+                        <td><%= schedule.id %></td>
+                        <td><%= schedule.Student.first_name %> <%= schedule.Student.last_name %></td>
+                        <td><%= schedule.Student.gender %></td>
+                        <td><%= schedule.date.toString().slice(0,21) %></td>
+                        <td><%= schedule.Student.email %></td>
+                        <form method="POST" action="/dashboard/<%= schedule.id %>/update-status">
+                            <td>
+                                <select name="status" id="">
+                                    <% if(schedule.status == 'pending'){ %>
+                                        <option value="pending" selected>pending</option>
+                                        <option value="confirmed">confirmed</option>
+                                        <option value="reject">reject</option>
+                                    <% } else if(schedule.status == 'confirmed'){ %>
+                                        <option value="pending">pending</option>
+                                        <option value="confirmed" selected>confirmed</option>
+                                        <option value="reject">reject</option>
+                                    <% } else { %>
+                                        <option value="pending" >pending</option>
+                                        <option value="confirmed">confirmed</option>
+                                        <option value="reject" selected>reject</option>
+                                    <% } %>
+                                </select>
+                                <button type="submit">submit</button>
+                            </td>
+                        </form>
+                        
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+</body>
+</html>

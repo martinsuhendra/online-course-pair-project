@@ -19,7 +19,38 @@ router.get('/', (req, res)=> {
         .catch((err)=> {
             res.send(err.message)
         })
+    } else {
+        TeacherStudent.findAll({
+            where: {
+                TeacherId : req.session.login.id
+            },
+            include:[{
+                model:Student
+            }]
+        })
+        .then((schedules)=> {
+            // res.send(schedules)
+            res.render('dashboard-teacher',{schedules})
+        })
     }
+
+    router.post('/:id/update-status',(req,res)=> {
+        // res.send(req.body)
+        TeacherStudent.update({
+            status : req.body.status
+        },{
+            where: {
+                id : req.params.id
+            }
+        })
+        .then(()=> {
+            // res.send(data)
+            res.redirect(`/`)
+        })
+        .catch((err)=> {
+            res.send(err)
+        })
+    })
 })
 
 router.post('/:id/give-rate', (req, res) => {
@@ -37,5 +68,6 @@ router.post('/:id/give-rate', (req, res) => {
             res.send(err.message)
         })
 })
+
 
 module.exports = router
