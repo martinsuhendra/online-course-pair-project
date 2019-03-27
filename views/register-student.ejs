@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Register</title>
+</head>
+
+<body>
+    <header>
+        <% include ./partials/nav-bar.ejs %>
+    </header>
+    <center>
+        <h1>Student Register</h1>
+        <form method="POST" action="/register/student">
+            First Name:
+            <input type="text" name="first_name">
+            Last Name:
+            <input type="text" name="last_name">
+            Gender:
+            <select name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            Email:
+            <input type="text" name="email">
+            Password:
+            <input type="password" name="password">
+            <button type="submit">Submit</button>
+        </form>
+    </center>
+</body>
+
+</html>
