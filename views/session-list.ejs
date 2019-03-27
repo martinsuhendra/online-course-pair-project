@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teachers</title>
+</head>
+<body>
+        <% include ./partials/nav-bar.ejs %>
+        <center>
+           <h1>The Mentors</h1> 
+           <table cellpadding=10 rows=rules>
+               <thead>
+                   <tr>
+                       <th>Name</th>
+                       <th>Gender</th>
+                       <th>Email</th>
+                       <th>Instrument</th>
+                       <th>Rating</th>
+                       <th>Option</th>
+                   </tr>
+               </thead>
+               <tbody>
+                   <tr>
+                       <% teachers.forEach(teacher => { %>
+                           <td><%= teacher.getFullName() %></td>
+                           <td><%= teacher.gender %></td>
+                           <td><%= teacher.email %></td>
+                           <td><%= teacher.instrument %></td>
+                           <% if(!teacher.rating){ %>
+                               <td>no review</td>
+                           <% } else { %>
+                               <td><%= teacher.rating %></td>
+                           <% } %>
+                           <td><a href="/session/<%= teacher.id %>">Make appointment</a></td>
+                        </tr>
+                      <% }) %>
+               </tbody>
+           </table>
+        </center>
+</body>
+</html>

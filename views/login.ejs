@@ -3,50 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iofrm</title>
-    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/css/fontawesome-all.min.css">
-    <link rel="stylesheet" type="text/css" href="../public/css/iofrm-style.css">
-    <link rel="stylesheet" type="text/css" href="../publi/css/iofrm-theme17.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
 </head>
 <body>
-    <div class="form-body without-side">
-        
-        <div class="row">
-            <div class="img-holder">
-                <div class="bg"></div>
-                <div class="info-holder">
-                    <img src="images/graphic3.svg" alt="">
-                </div>
-            </div>
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Learn Music With Your Own Pace!</h3>
-                        <p>Access to the most powerfull online music course in the entire universe.</p>
-                        <form>
-                            <input class="form-control" type="text" name="name" placeholder="Full Name" required>
-                            <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
-                            <input class="form-control" type="password" name="password" placeholder="Password" required>
-                            <div class="form-button">
-                                <button id="submit" type="submit" class="ibtn">Register</button>
-                            </div>
-                        </form>
-                        <div class="other-links">
-                            <div class="text">Or register with</div>
-                            <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a><a href="#"><i class="fab fa-google"></i>Google</a><a href="#"><i class="fab fa-linkedin-in"></i>Linkedin</a>
-                        </div>
-                        <div class="page-links">
-                            <a href="login17.html">Login to account</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/main.js"></script>
+    <header>
+        <% include ./partials/nav-bar.ejs %>
+    </header>
+    <center>
+        <h1 style="margin-top:3%">Login</h1>
+        <form method="POST" style="margin-top:10%">
+            Email:
+            <input type="text" name="email" value="">
+            Password:
+            <input type="password" name="password" value="">
+            Role: 
+            <select name="role"> 
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+            </select>
+            <button type="submit">Submit</button><br>
+        </form>
+    </center>
 </body>
 </html>
