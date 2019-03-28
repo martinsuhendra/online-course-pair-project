@@ -28,16 +28,20 @@
                     <td><%= getDate(teacher.date) %></td>
                     <td><%= teacher.status %></td>
                     <% if(teacher.status == 'confirmed') { %>
-                        <td>
-                            <form action="/dashboard/<%= teacher.Teacher.id %>/give-rate" method="post">
-                                <select name="rating">
-                                    <% for(let i = 1; i <= 5; i++) { %>
-                                        <option value="<%= i %>"><%= i %></option>
-                                    <% } %>
-                                </select>
-                                <button type="submit">Rate</button>
-                            </form>
-                        </td>
+                        <% if(teacher.teacherRating == false) { %>
+                            <td>
+                                <form action="/dashboard/<%= teacher.id %>/give-rate" method="post">
+                                    <select name="rating">
+                                        <% for(let i = 1; i <= 5; i++) { %>
+                                            <option value="<%= i %>"><%= i %></option>
+                                        <% } %>
+                                    </select>
+                                    <button type="submit">Rate</button>
+                                </form>
+                            </td>
+                        <% } else { %>
+                            <td>rated</td>
+                        <% } %>
                     <% } else { %>
                         <td>No Rate</td>
                     <% } %>

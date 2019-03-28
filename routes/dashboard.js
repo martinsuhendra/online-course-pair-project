@@ -36,7 +36,7 @@ router.get('/', (req, res)=> {
     }
 
     router.post('/:id/update-status',(req,res)=> {
-        // res.send(req.body)
+        res.send(req.body)
         TeacherStudent.update({
             status : req.body.status
         },{
@@ -55,8 +55,9 @@ router.get('/', (req, res)=> {
 })
 
 router.post('/:id/give-rate', (req, res) => {
-    Teacher.update({
-        rating: req.body.rating
+    // res.send(req.body)
+    TeacherStudent.update({
+        teacherRating: true
     }, {
         where: {
             id: req.params.id
