@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     TeacherId: DataTypes.INTEGER,
     StudentId: DataTypes.INTEGER,
     date: DataTypes.DATE,
+    teacherRating: DataTypes.BOOLEAN,
     status: {
       type: DataTypes.STRING,
       validate : {
@@ -20,6 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     hooks: {
       beforeCreate(schedule){
         schedule.date = schedule.date
+      },
+      afterUpdate(instance, option) {
+        instance.teacherRating = true
       }
     }
   });
