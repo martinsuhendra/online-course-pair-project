@@ -8,5 +8,25 @@
 </head>
 <body>
     <% include ./partials/nav-bar.ejs %>
+    <center>
+            <h1>Our Best Mentors</h1>
+            <br>
+        <table rules=rows cellpadding=10>
+            <thead>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Instrument</th>
+                <th>Rating</th>
+            </thead>
+            <tr>
+                <% teachers.forEach((teacher, idx)=> { %>
+                    <td><%= idx + 1 %></td>
+                    <td><%= teacher.getFullName() %></td>
+                    <td><%= teacher.instrument %></td>
+                    <td><%= teacher.rating %></td>
+            </tr>
+            <% }) %>
+        </table>
+    </center>
 </body>
 </html>
