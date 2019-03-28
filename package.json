@@ -24,6 +24,7 @@
     "express-session": "^1.15.6",
     "nodemailer": "^6.0.0",
     "pg": "^7.9.0",
+    "sentence-similarity": "^1.0.7",
     "sequelize": "^5.2.0"
   }
 }
