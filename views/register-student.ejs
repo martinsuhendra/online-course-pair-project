@@ -15,6 +15,13 @@
 							<div class="container">
                                 <div class="col-md-4"></div>
                                 <div class="col-md-4">
+                                    <% if(error.length !== 0) { %>
+                                        <% error.join('').split(',').forEach(el => { %>
+                                            <div class="alert alert-danger" role="alert" style="height:20px">
+                                                <p style="margin-top:-12px"><%= el %></p>
+                                            </div>
+                                        <% }) %>
+                                    <% } %>
                                     <h1>Student Register</h1>
                                     <form method="POST" action="/register/student" class="form-horizontal">
                                         <div class="form-group">

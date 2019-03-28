@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-        <% include ./partials/head %>
+<% include ./partials/head %>
 
-	<body class="header-collapse">
+<body class="header-collapse">
 
-		<div id="site-content">
+	<div id="site-content">
 
-			<header class="site-header">
-				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-				<div class="container">
-					<a href="index.html" id="branding" style="color: orange">
-						<i class="fas fa-guitar" > Classic</i>
+		<header class="site-header">
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+				integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+				crossorigin="anonymous">
+			<div class="container">
+				<a href="index.html" id="branding" style="color: orange">
+					<i class="fas fa-guitar"> Classic</i>
 					<small class="site-description">`start your music skill right through your door`</small>
-					</a> <!-- #branding -->
-					
-					<nav class="main-navigation">
+				</a> <!-- #branding -->
+
+				<nav class="main-navigation">
 					<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
 					<ul class="menu">
 						<% if(locals.login) { %>
@@ -27,57 +29,68 @@
 						<li class="menu-item"><a href="/register">Sign Up</a></li>
 						<% } %>
 					</ul> <!-- .menu -->
-					</nav> <!-- .main-navigation -->
-					<div class="mobile-menu"></div>
-				</div>
-			</header> <!-- .site-header -->
+				</nav> <!-- .main-navigation -->
+				<div class="mobile-menu"></div>
+			</div>
+		</header> <!-- .site-header -->
 
-			<main class="main-content" style="margin-top: 10%">
-				<div class="row">
-					<div class="container-fluid">
-						<div class="col-md-4"></div>
-						<div class="col-md-4">
-                            <center>
-                                <h1>Book Teacher</h1>
-								<form action="/session/<%= teacher.id  %>" method="POST" class="form-horizontal">
-									<div class="form-group">
-										<label for="name" class="control-label">Name</label>
-										<input type="text" name="name" value="<%= teacher.getFullName()%>" class="form-control" disabled>
+		<main class="main-content" style="margin-top: 10%">
+			<div class="row">
+				<div class="container-fluid">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
+						<center>
+							<h1>Book Teacher</h1>
+							<form action="/session/<%= teacher.id  %>" method="POST" class="form-horizontal">
+								<div class="form-group">
+									<label for="name" class="control-label">Name</label>
+									<input type="text" name="name" value="<%= teacher.getFullName()%>"
+										class="form-control" disabled>
+								</div>
+								<div class="form-group">
+									<label for="gender" class="control-label">Gender</label>
+									<input type="text" name="gender" value="<%= teacher.gender %>" class="form-control"
+										disabled>
+								</div>
+								<div class="form-group">
+									<label for="email" class="control-label">Email</label>
+									<input type="text" name="email" value="<%= teacher.email %>" class="form-control"
+										disabled>
+								</div>
+								<div class="form-group">
+									<label for="instrument" class="control-label">Instrument</label>
+									<input type="text" name="instrument" value="<%= teacher.instrument %>"
+										class="form-control" disabled>
+								</div>
+								<div class="form-group">
+									<label for="date" class="control-label">Date:</label>
+									<% if(error.length !== 0) { %>
+									<% error.join('').split(',').forEach(el => { %>
+									<div class="alert alert-danger" role="alert" style="height:20px">
+										<p style="margin-top:-12px"><%= el %></p>
 									</div>
-									<div class="form-group">
-										<label for="gender" class="control-label">Gender</label>
-										<input type="text" name="gender" value="<%= teacher.gender %>" class="form-control" disabled>
-									</div>
-									<div class="form-group">
-										<label for="email" class="control-label">Email</label>
-										<input type="text" name="email" value="<%= teacher.email %>" class="form-control" disabled>
-									</div>
-									<div class="form-group">
-										<label for="instrument" class="control-label">Instrument</label>
-										<input type="text" name="instrument" value="<%= teacher.instrument %>" class="form-control" disabled>
-									</div>
-									<div class="form-group">
-										<label for="date" class="control-label">Date:</label>
-										<input type="datetime-local" name="date" class="form-control">
-									</div>
-									<div class="form-group">
-										<button type="submit" class="form-control btn btn-success">Book</button>
-									</div>
-                                    <br>
-                                </form>
-                            </center>
-                        </div>
-                        <div class="col-md-4"></div>
-                </div>
-            </div>
-			</main> <!-- .main-content -->
+									<% }) %>
+									<% } %>
+									<input type="datetime-local" name="date" class="form-control">
+								</div>
+								<div class="form-group">
+									<button type="submit" class="form-control btn btn-success">Book</button>
+								</div>
+								<br>
+							</form>
+						</center>
+					</div>
+					<div class="col-md-4"></div>
+				</div>
+			</div>
+		</main> <!-- .main-content -->
 
 		<% include ./partials/footer %>
 
-		</div> <!-- #site-content -->
+	</div> <!-- #site-content -->
 
-        <% include ./partials/script-js %>
+	<% include ./partials/script-js %>
 
-	</body>
+</body>
 
 </html>

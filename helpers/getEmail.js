@@ -15,7 +15,7 @@ function sendMail(target, text) {
     let email = `${text}`
 
     let mailOptions = {
-        from: '"UltimateTeam" <UltimateTeam@hacktiv8.com>', // sender address
+        from: '"Classic-(Class Music)" <Classic@hacktiv8.com>', // sender address
         to: target, // list of receivers
         subject: "REGENERATE", // Subject line
         text: email, // plain text body

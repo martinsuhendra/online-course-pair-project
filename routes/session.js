@@ -15,11 +15,15 @@ router.get('/',(req, res)=> {
 })
 
 router.get('/:id',(req, res)=> {
+    let error = []
+    if (req.query.err) {
+        error.push(req.query.err)
+    }
     Teacher
         .findByPk(req.params.id)
         .then((teacher)=> {
             // res.send(teacher)
-            res.render('session-book',{teacher})
+            res.render('session-book',{teacher, error})
         })
         .catch((err)=> {
             res.send(err)
@@ -27,7 +31,7 @@ router.get('/:id',(req, res)=> {
 })
 
 router.post('/:id', (req, res)=> {
-    // res.send(req.body)
+    // res.send(typeof(new Date(req.body.date)))
     let teacherData;
     TeacherStudent
         .create(
@@ -50,7 +54,8 @@ router.post('/:id', (req, res)=> {
             res.redirect('/session')
         })
         .catch((err)=> {
-            res.send(err.message)
+            let error = err.errors.map(el=> el.message)
+            res.redirect(`/session/${req.params.id}?err=${error}`)
         })
 })
 

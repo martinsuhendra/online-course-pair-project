@@ -1,74 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-    <% include ./partials/head %>
+<% include ./partials/head %>
 
-	<body class="header-collapse">
+<body class="header-collapse">
 
-		<div id="site-content">
+    <div id="site-content">
 
         <% include ./partials/header %>
 
-			<div class="hero">
-				<div class="slider">
-					<ul class="slides">
-						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
-							<div class="container">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <h1>Teacher Register</h1>
-                                    <form method="POST" action="/register/teacher" class="form-horizontal">
-                                        <div class="form-group">
-                                            <label for="first_name" class="control-label">First Name:</label>
-                                            <input type="text" name="first_name" class="form-control" placeholder="Your First Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="last_name" class="control-label">Last Name:</label>
-                                            <input type="text" name="last_name" class="form-control" placeholder="Your First Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="gender" class="control-label">Gender:</label>
-                                            <select name="gender" class="form-control">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email" class="control-label">Email:</label>
-                                            <input type="text" name="email" class="form-control" placeholder="Your Email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password" class="control-label">Password: </label>
-                                            <input type="password" name="password" class="form-control" placeholder="Your Password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="instrument" class="control-label">Instrument:</label>
-                                            <input type="text" name="instrument" class="form-control" placeholder="Your Instrument">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="instrument" class="control-label">Tags:</label>
-                                            <input type="text" name="tags" class="form-control" placeholder="Input Your Tags">
-                                        </div><br>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-success form-control">Submit</button>
-                                        </div>
-                                    </form>
+        <div class="hero">
+            <div class="slider">
+                <ul class="slides">
+                    <li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+                        <div class="container">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <% if(error.length !== 0) { %>
+                                <% error.join('').split(',').forEach(el => { %>
+                                <div class="alert alert-danger" role="alert" style="height:20px">
+                                    <p style="margin-top:-12px"><%= el %></p>
                                 </div>
-        
-                                <div class="col-md-4"></div>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</div>
+                                <% }) %>
+                                <% } %>
+                                <h1>Teacher Register</h1>
+                                <form method="POST" action="/register/teacher" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="first_name" class="control-label">First Name:</label>
+                                        <input type="text" name="first_name" class="form-control"
+                                            placeholder="Your First Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name" class="control-label">Last Name:</label>
+                                        <input type="text" name="last_name" class="form-control"
+                                            placeholder="Your First Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender" class="control-label">Gender:</label>
+                                        <select name="gender" class="form-control">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="control-label">Email:</label>
+                                        <input type="text" name="email" class="form-control" placeholder="Your Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="control-label">Password: </label>
+                                        <input type="password" name="password" class="form-control"
+                                            placeholder="Your Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="instrument" class="control-label">Instrument:</label>
+                                        <input type="text" name="instrument" class="form-control"
+                                            placeholder="Your Instrument">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="instrument" class="control-label">Tags:</label>
+                                        <input type="text" name="tags" class="form-control"
+                                            placeholder="Input Your Tags">
+                                    </div><br>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success form-control">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
 
-			<main class="main-content">
-				
-			</main> <!-- .main-content -->
+                            <div class="col-md-4"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
 
-		</div> <!-- #site-content -->
+        <main class="main-content">
 
-		<% include ./partials/script-js %>
+        </main> <!-- .main-content -->
 
-	</body>
+    </div> <!-- #site-content -->
+
+    <% include ./partials/script-js %>
+
+</body>
 
 </html>
