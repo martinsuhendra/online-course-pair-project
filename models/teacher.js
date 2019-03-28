@@ -69,6 +69,9 @@ module.exports = (sequelize, DataTypes) => {
     totalReview : {
       type: DataTypes.INTEGER,
       defaultValue: 0
+    },
+    tags : {
+      type: DataTypes.STRING
     }
   }, {
     hooks: {

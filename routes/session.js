@@ -3,6 +3,7 @@ const {Teacher, Student, TeacherStudent} = require('../models')
 const sendMail = require('../helpers/getEmail')
 
 router.get('/',(req, res)=> {
+   
     Teacher
         .findAll()
         .then((teachers)=> {
@@ -52,5 +53,6 @@ router.post('/:id', (req, res)=> {
             res.send(err.message)
         })
 })
+
 
 module.exports = router
