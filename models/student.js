@@ -64,5 +64,8 @@ module.exports = (sequelize, DataTypes) => {
   Student.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.password);
   }
+  Student.prototype.getFullName = function(){
+    return `${this.first_name} ${this.last_name}`
+  }
   return Student;
 };
