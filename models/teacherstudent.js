@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
           .then((teacher)=> {
             return teacher.update({
               totalReview : +teacher.totalReview + 1,
-              rating: Math.floor((Number(teacher.rating)+ Number(option.rating)) / Number(teacher.totalReview+1))
+              rating: (Number(teacher.rating)+ Number(option.rating)) / Number(teacher.totalReview+1)
             })
           })
       }
