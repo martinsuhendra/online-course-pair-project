@@ -2,6 +2,7 @@ const router = require('express').Router()
 const {Student, Teacher, TeacherStudent}  = require('../models')
 const  getFullName = require('../helpers/getFullName')
 const getDate = require('../helpers/getDate')
+const sendMail = require('../helpers/getEmail')
 
 router.get('/', (req, res)=> {
     // res.send(req.session)
@@ -36,7 +37,8 @@ router.get('/', (req, res)=> {
     }
 
     router.post('/:id/update-status',(req,res)=> {
-        // res.send(req.body)
+        let teacherData;
+        let studentId;
         TeacherStudent.update({
             status : req.body.status
         },{
@@ -45,7 +47,21 @@ router.get('/', (req, res)=> {
             }
         })
         .then(()=> {
+            return TeacherStudent.findByPk(req.params.id)
+            
+        })
+        .then((schedule)=> {
+            studentId = schedule.StudentId
+            return Teacher.findByPk(schedule.TeacherId)
+        })
+        .then((teacher)=> {
+            teacherData = teacher
+            return Student.findByPk(studentId)
+        })
+        .then((student)=> {
             // res.send(data)
+            let text = `Dear ${student.getFullName()}, You got one message from ${teacherData.getFullName()}!`
+            sendMail(student.email,text)
             res.redirect('/')
         })
         .catch((err)=> {
