@@ -1,53 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <% include ./partials/nav-bar.ejs %>
-    <table rules="rows" cellpadding="10">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Teacher Name</th>
-                <th>Instrument</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>Give Rate</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% schedules.forEach((teacher, index) => { %>
-                <tr>
-                    <td><%= index + 1 %></td>
-                    <td><%= getFullName(teacher.Teacher.first_name, teacher.Teacher.last_name) %></td>
-                    <td><%= teacher.Teacher.instrument %></td>
-                    <td><%= getDate(teacher.date) %></td>
-                    <td><%= teacher.status %></td>
-                    <% if(teacher.status == 'confirmed') { %>
-                        <% if(teacher.teacherRating == false) { %>
-                            <td>
-                                <form action="/dashboard/<%= teacher.id %>/give-rate" method="post">
-                                    <select name="rating">
-                                        <% for(let i = 1; i <= 5; i++) { %>
-                                            <option value="<%= i %>"><%= i %></option>
-                                        <% } %>
-                                    </select>
-                                    <button type="submit">Rate</button>
-                                </form>
-                            </td>
-                        <% } else { %>
-                            <td>rated</td>
-                        <% } %>
-                    <% } else { %>
-                        <td>No Rate</td>
-                    <% } %>
-                </tr>
-           <% }) %>
-        </tbody>
-    </table>
-</body>
+        <% include ./partials/head %>
+
+	<body class="header-collapse">
+		
+		<div id="site-content">
+
+        <% include ./partials/header %>
+
+			<div class="hero">
+				<div class="slider">
+					<ul class="slides">
+						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+							<div class="container">
+								<h2 class="slide-title">Classic</h2>
+								<h3 class="slide-subtitle">Bring The Most Skillfull Musician to Your Door</h3>
+								<i class="slide-desc">Education isn't just about feeding the brain. Music feed the heart and soul.'</i>
+								<p class="slide-desc">Julie Garwood</p>
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-2.jpg">
+							<div class="container">
+                                <h2 class="slide-title">Header goes here</h2>
+                                <h3 class="slide-subtitle">Less important text goes here</h3>
+                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-3.jpg">
+							<div class="container">
+                                <h2 class="slide-title">Header goes here</h2>
+                                <h3 class="slide-subtitle">Less important text goes here</h3>
+                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<main class="main-content">
+				<div class="row">
+					<div class="container-fluid">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+                            <center>
+                                <h1>Student Appointment</h1>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Teacher Name</th>
+                                            <th>Instrument</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Give Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% schedules.forEach((teacher, index) => { %>
+                                        <tr>
+                                            <td><%= index + 1 %></td>
+                                            <td><%= getFullName(teacher.Teacher.first_name, teacher.Teacher.last_name) %></td>
+                                            <td><%= teacher.Teacher.instrument %></td>
+                                            <td><%= getDate(teacher.date) %></td>
+                                            <td><%= teacher.status %></td>
+                                            <% if(teacher.status == 'confirmed') { %>
+                                                <% if(teacher.teacherRating == false) { %>
+                                                    <td>
+                                                        <form action="/dashboard/<%= teacher.id %>/give-rate" method="post">
+                                                            <select name="rating">
+                                                                <% for(let i = 1; i <= 5; i++) { %>
+                                                                    <option value="<%= i %>"><%= i %></option>
+                                                                <% } %>
+                                                            </select>
+                                                            <button type="submit" class="btn btn-primary">Rate</button>
+                                                        </form>
+                                                    </td>
+                                                <% } else { %>
+                                                    <td>rated</td>
+                                                <% } %>
+                                            <% } else { %>
+                                                <td>No Rate</td>
+                                            <% } %>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </center>
+
+						<div class="col-md-2"></div>
+
+					</div>
+                </div>
+            </div>
+			</main> <!-- .main-content -->
+
+		<% include ./partials/footer %>
+
+		</div> <!-- #site-content -->
+
+		<% include ./partials/script-js %>
+
+	</body>
+
 </html>

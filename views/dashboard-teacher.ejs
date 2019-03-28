@@ -1,54 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Teacher Dashboard</title>
-</head>
-<body>
-        <% include ./partials/nav-bar.ejs %>
-        <table rules=rows cellpadding=10>
-            <thead>
-                <th> Id</th>
-                <th> Student Name</th>
-                <th> Gender</th>
-                <th> Date</th>
-                <th> Email</th>
-                <th> Status</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <% schedules.forEach(schedule => { %>
-                        <td><%= schedule.id %></td>
-                        <td><%= getFullName(schedule.Student.first_name, schedule.Student.last_name) %></td>
-                        <td><%= schedule.Student.gender %></td>
-                        <td><%= getDate(schedule.date) %></td>
-                        <td><%= schedule.Student.email %></td>
-                        <form method="POST" action="/dashboard/<%= schedule.id %>/update-status">
-                            <td>
-                                <select name="status" id="">
-                                    <% if(schedule.status == 'pending'){ %>
-                                        <option value="pending" selected>pending</option>
-                                        <option value="confirmed">confirmed</option>
-                                        <option value="reject">reject</option>
-                                    <% } else if(schedule.status == 'confirmed'){ %>
-                                        <option value="pending">pending</option>
-                                        <option value="confirmed" selected>confirmed</option>
-                                        <option value="reject">reject</option>
-                                    <% } else { %>
-                                        <option value="pending" >pending</option>
-                                        <option value="confirmed">confirmed</option>
-                                        <option value="reject" selected>reject</option>
-                                    <% } %>
-                                </select>
-                                <button type="submit">submit</button>
-                            </td>
-                        </form>
-                        
-                    </tr>
-                    <% }) %>
-            </tbody>
-        </table>
-</body>
+        <% include ./partials/head %>
+
+	<body class="header-collapse">
+
+		<div id="site-content">
+
+        <% include ./partials/header %>
+
+			<div class="hero">
+				<div class="slider">
+					<ul class="slides">
+						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+							<div class="container">
+								<h2 class="slide-title">Classic</h2>
+								<h3 class="slide-subtitle">Bring The Most Skillfull Musician to Your Door</h3>
+								<i class="slide-desc">Education isn't just about feeding the brain. Music feed the heart and soul.'</i>
+								<p class="slide-desc">Julie Garwood</p>
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-2.jpg">
+							<div class="container">
+                                <h2 class="slide-title">Header goes here</h2>
+                                <h3 class="slide-subtitle">Less important text goes here</h3>
+                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-3.jpg">
+							<div class="container">
+                                <h2 class="slide-title">Header goes here</h2>
+                                <h3 class="slide-subtitle">Less important text goes here</h3>
+                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<main class="main-content">
+				<div class="row">
+					<div class="container-fluid">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+                            <center>
+                                <h1>Teacher Appointment</h1>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <th> Id</th>
+                                        <th> Student Name</th>
+                                        <th> Gender</th>
+                                        <th> Date</th>
+                                        <th> Email</th>
+                                        <th> Status</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <% schedules.forEach(schedule => { %>
+                                            <td><%= schedule.id %></td>
+                                            <td><%= getFullName(schedule.Student.first_name, schedule.Student.last_name) %></td>
+                                            <td><%= schedule.Student.gender %></td>
+                                            <td><%= getDate(schedule.date) %></td>
+                                            <td><%= schedule.Student.email %></td>
+                                            <form method="POST" action="/dashboard/<%= schedule.id %>/update-status" class="form-inline">
+                                                <td>
+                                                    <div class="form-group">
+
+                                                        <select name="status" class="form-control">
+                                                            <% if(schedule.status == 'pending'){ %>
+                                                                <option value="pending" selected>pending</option>
+                                                                <option value="confirmed">confirmed</option>
+                                                                <option value="reject">reject</option>
+                                                            <% } else if(schedule.status == 'confirmed'){ %>
+                                                                <option value="pending">pending</option>
+                                                                <option value="confirmed" selected>confirmed</option>
+                                                                <option value="reject">reject</option>
+                                                            <% } else { %>
+                                                                <option value="pending" >pending</option>
+                                                                <option value="confirmed">confirmed</option>
+                                                                <option value="reject" selected>reject</option>
+                                                            <% } %>
+                                                        </select>
+                                                        <button type="submit" class="btn btn-success">submit</button
+                                                    </div>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </center>
+
+						<div class="col-md-2"></div>
+
+					</div>
+                </div>
+            </div>
+			</main> <!-- .main-content -->
+
+		<% include ./partials/footer %>
+
+		</div> <!-- #site-content -->
+
+        <% include ./partials/script-js %>
+
+	</body>
+
 </html>
