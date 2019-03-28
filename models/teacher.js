@@ -59,14 +59,17 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     rating : {
-      type: DataTypes.INTEGER,
+      type: DataTypes.INTEGER,0
       defaultValue: null,
       validate: {
         min: {args: 1, msg:`rating must between 1 - 5`},
         max: {args: 5, msg:`rating must between 1 - 5`}
       }
     },
-    totalReview: DataTypes.INTEGER
+    totalReview : {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   }, {
     hooks: {
       beforeCreate(teacher) {
