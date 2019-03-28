@@ -9,6 +9,7 @@ const session = require('express-session')
 const logoutRoutes = require('./routes/logout')
 const sessionRoutes = require('./routes/session')
 const dashboardRoutes = require('./routes/dashboard')
+const searchRoutes = require('./routes/search')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extends: true}))
@@ -35,6 +36,7 @@ app.use('/register', registerRoutes)
 app.use('/logout',logoutRoutes)
 app.use('/session',sessionRoutes) 
 app.use('/dashboard', dashboardRoutes)
+app.use('/search',searchRoutes)
 
 app.listen(port, ()=> {
     console.log(`listening to port: ${port}`)
