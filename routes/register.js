@@ -6,11 +6,11 @@ router.get('/',(req, res)=> {
 })
 
 router.get('/student',(req, res)=> {
-    let errQuery;
-    if (req.query) {
-        errQuery = req.query
+    let error = []
+    if (req.query.err) {
+        error.push(req.query.err)
     }
-    res.render('register-student',{errQuery})
+    res.render('register-student', {error})
 })
 
 router.post('/student',(req,res)=> {
@@ -21,29 +21,29 @@ router.post('/student',(req,res)=> {
         res.redirect('/login')
     })
     .catch((err)=> {
-        res.redirect(`/register/student/?${err}`)
+        let error = err.errors.map(el=> el.message)
+        res.redirect(`/register/student/?err=${error}`)
     })
     
 })
 
 router.get('/teacher',(req, res)=> {
-    // let errQuery;
-    // if (req.query) {
-    //     errQuery = req.query
-    // }
-    res.render('register-teacher')
+    let error = []
+    if (req.query.err) {
+        error.push(req.query.err)
+    }
+    res.render('register-teacher',{error})
 })
 
 router.post('/teacher',(req,res)=> {
-    // res.send(req.body)
     Teacher
     .create(req.body)
     .then(()=>{
         res.redirect('/login')
     })
     .catch((err)=> {
-        res.send(err.message)
-        // res.redirect(`/register/teacher/?${err}`)
+        let error = err.errors.map(el=> el.message)
+        res.redirect(`/register/teacher/?err=${error}`)
     })
     
 })

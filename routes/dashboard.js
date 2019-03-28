@@ -9,11 +9,12 @@ router.get('/', (req, res)=> {
     if (req.session.login.role == 'student') {
         TeacherStudent.findAll({
             where: {
-                StudentId : req.session.login.id,
+                StudentId : req.session.login.id
             },
             include: [{
                 model: Teacher
-            }]
+            }],
+            order: [['id','DESC']]
         })
         .then((schedules)=>{
             res.render('dashboard-student',{schedules, getFullName, getDate})
@@ -28,7 +29,8 @@ router.get('/', (req, res)=> {
             },
             include:[{
                 model:Student
-            }]
+            }],
+            order: [['id','DESC']]
         })
         .then((schedules)=> {
             // res.send(schedules)
@@ -62,7 +64,7 @@ router.get('/', (req, res)=> {
             // res.send(data)
             let text = `Dear ${student.getFullName()}, You got one message from ${teacherData.getFullName()}!`
             sendMail(student.email,text)
-            res.redirect('/')
+            res.redirect('/dashboard')
         })
         .catch((err)=> {
             res.send(err)
@@ -86,19 +88,6 @@ router.post('/:id/give-rate', (req, res) => {
         .catch(err => {
             res.send(err.message)
         })
-    // TeacherStudent.update({
-    //     teacherRating: true
-    // }, {
-    //     where: {
-    //         id: req.params.id
-    //     }
-    // })
-    //     .then(() => {
-    //         res.redirect('/dashboard')
-    //     })
-    //     .catch(err => {
-    //         res.send(err.message)
-    //     })
 })
 
 

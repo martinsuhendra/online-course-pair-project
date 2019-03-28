@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'Please fill the blank'
+          msg: 'Please fill your First Name'
         }
       }
     },
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'Please fill the blank'
+          msg: 'Please fill your Last Name'
         }
       }
     },
@@ -41,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'Please fill the blank'
+          msg: 'Please fill your Password'
         },
         len: {
           args: [5],
@@ -54,12 +54,12 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           args: true,
-          msg: 'Please fill the blank'
+          msg: 'Please fill the Instrument you play'
         }
       }
     },
     rating : {
-      type: DataTypes.INTEGER,
+      type: DataTypes.FLOAT,
       defaultValue: 0
     },
     totalReview : {
