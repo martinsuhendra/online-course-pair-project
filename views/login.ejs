@@ -1,29 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
-</head>
-<body>
-    <header>
-        <% include ./partials/nav-bar.ejs %>
-    </header>
-    <center>
-        <h1 style="margin-top:3%">Login</h1>
-        <form method="POST" style="margin-top:10%">
-            Email:
-            <input type="text" name="email" value="">
-            Password:
-            <input type="password" name="password" value="">
-            Role: 
-            <select name="role"> 
-                <option value="student">Student</option>
-                <option value="teacher">Teacher</option>
-            </select>
-            <button type="submit">Submit</button><br>
-        </form>
-    </center>
-</body>
+    <% include ./partials/head %>
+
+	<body class="header-collapse">
+
+		<div id="site-content">
+
+        <% include ./partials/header %>
+
+			<div class="hero">
+				<div class="slider">
+					<ul class="slides">
+						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+							<div class="container">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <h1 style="margin-top:3%">Login</h1>
+                                    <form method="POST"class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="email" class="control-label">Email:</label>
+                                            <input type="text" name="email" value="" class="form-control" placeholder="Your Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="control-label">Password:</label>
+                                            <input type="password" name="password" value="" class="form-control" placeholder="Your Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="role" class="control-label">Role:</label>
+                                            <select name="role" class="form-control"> 
+                                                <option value="student">Student</option>
+                                                <option value="teacher">Teacher</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-2"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div> <!-- #site-content -->
+
+		<% include ./partials/script-js %>
+
+	</body>
+
 </html>

@@ -1,20 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+    <% include ./partials/head %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
-</head>
+	<body class="header-collapse">
 
-<body>
-        <% include ./partials/nav-bar.ejs %>
-    <h1>Registration</h1>
-   <ul>
-       <li><a href="/register/student">Student</a></li>
-       <li><a href="/register/teacher">Teacher</a></li>
-   </ul>
-</body>
+		<div id="site-content">
+
+        <% include ./partials/header %>
+
+			<div class="hero">
+				<div class="slider">
+					<ul class="slides">
+						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+							<div class="container">
+								<h2 class="slide-title">Classic</h2>
+								<h3 class="slide-subtitle">Bring The Most Skillfull Musician to Your Door</h3>
+								<i class="slide-desc">Education isn't just about feeding the brain. Music feed the heart and soul.'</i>
+								<p class="slide-desc">Julie Garwood</p>
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-2.jpg">
+							<div class="container">
+                                <h2 class="slide-title">Header goes here</h2>
+                                <h3 class="slide-subtitle">Less important text goes here</h3>
+                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-3.jpg">
+							<div class="container">
+                                <h2 class="slide-title">Header goes here</h2>
+                                <h3 class="slide-subtitle">Less important text goes here</h3>
+                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<main class="main-content">
+				<div class="row">
+					<div class="container-fluid">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+                            <h1>Registration</h1>
+                            <ul>
+                                <li><a href="/register/student">Student</a></li>
+                                <li><a href="/register/teacher">Teacher</a></li>
+                            </ul>
+                            </center>
+                        </div>
+
+						<div class="col-md-2"></div>
+
+                    </div>
+                </div>
+			</main> <!-- .main-content -->
+
+		<% include ./partials/footer %>
+
+		</div> <!-- #site-content -->
+
+		<% include ./partials/script-js %>
+
+	</body>
 
 </html>

@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+    <% include ./partials/head %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Register</title>
-</head>
+	<body class="header-collapse">
 
-<body>
-    <header>
-        <% include ./partials/nav-bar.ejs %>
-    </header>
-    <center>
-        <h1>Student Register</h1>
-        <form method="POST" action="/register/student">
-            First Name:
-            <input type="text" name="first_name">
-            Last Name:
-            <input type="text" name="last_name">
-            Gender:
-            <select name="gender">
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            Email:
-            <input type="text" name="email">
-            Password:
-            <input type="password" name="password">
-            <button type="submit">Submit</button>
-        </form>
-    </center>
-</body>
+		<div id="site-content">
+
+        <% include ./partials/header %>
+
+			<div class="hero">
+				<div class="slider">
+					<ul class="slides">
+						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+							<div class="container">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8">
+                                    <h1>Student Register</h1>
+                                    <form method="POST" action="/register/student" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="first_name" class="control-label">First Name:</label>
+                                            <input type="text" name="first_name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="last_name" class="control-label">Last Name:</label>
+                                            <input type="text" name="last_name" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="gender" class="control-label">Gender:</label>
+                                            <select name="gender" class="form-control">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email" class="control-label">Email:</label>
+                                            <input type="text" name="email" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password" class="control-label">Password: </label>
+                                            <input type="password" name="password" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-success">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+        
+                                <div class="col-md-2"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<main class="main-content">
+				
+			</main> <!-- .main-content -->
+
+		</div> <!-- #site-content -->
+
+		<% include ./partials/script-js %>
+
+	</body>
 
 </html>
