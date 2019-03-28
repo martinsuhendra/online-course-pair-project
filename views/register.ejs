@@ -1,67 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <% include ./partials/head %>
+<% include ./partials/head %>
 
-	<body class="header-collapse">
+<body class="header-collapse">
 
-		<div id="site-content">
+	<div id="site-content">
 
-        <% include ./partials/header %>
+		<% include ./partials/header %>
 
-			<div class="hero">
-				<div class="slider">
-					<ul class="slides">
-						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
-							<div class="container">
-								<h2 class="slide-title">Classic</h2>
-								<h3 class="slide-subtitle">Bring The Most Skillfull Musician to Your Door</h3>
-								<i class="slide-desc">Education isn't just about feeding the brain. Music feed the heart and soul.'</i>
-								<p class="slide-desc">Julie Garwood</p>
+		<div class="hero">
+			<div class="slider">
+				<ul class="slides">
+					<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+						<div class="container">
+							<h2 class="slide-title" style="margin-bottom:100px">Registration</h2>
+							<div class="row">
+								<div class="container-fluid">
+									<div class="col-md-6">
+										<div>
+											<a href="/register/student"><img src="/images/jimi.jpg" alt=""><p style="display:block">Student</p></a>
+											
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div>
+											<a href="/register/teacher"><img src="/dummy/thumbnail-3@2x.jpg" alt=""><p style="display:block">Teacher</p></a>
+										</div>
+									</div>
+								</div>
 							</div>
-						</li>
-						<li class="lazy-bg" data-background="./dummy/slide-2.jpg">
-							<div class="container">
-                                <h2 class="slide-title">Header goes here</h2>
-                                <h3 class="slide-subtitle">Less important text goes here</h3>
-                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
-							</div>
-						</li>
-						<li class="lazy-bg" data-background="./dummy/slide-3.jpg">
-							<div class="container">
-                                <h2 class="slide-title">Header goes here</h2>
-                                <h3 class="slide-subtitle">Less important text goes here</h3>
-                                <p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
-							</div>
-						</li>
-					</ul>
-				</div>
+						</div>
+					</li>
+				</ul>
 			</div>
+		</div>
 
-			<main class="main-content">
-				<div class="row">
-					<div class="container-fluid">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
-                            <h1>Registration</h1>
-                            <ul>
-                                <li><a href="/register/student">Student</a></li>
-                                <li><a href="/register/teacher">Teacher</a></li>
-                            </ul>
-                            </center>
-                        </div>
+		<main class="main-content">
 
-						<div class="col-md-2"></div>
-
-                    </div>
-                </div>
-			</main> <!-- .main-content -->
+		</main> <!-- .main-content -->
 
 		<% include ./partials/footer %>
 
-		</div> <!-- #site-content -->
+	</div> <!-- #site-content -->
 
-		<% include ./partials/script-js %>
+	<% include ./partials/script-js %>
 
-	</body>
+</body>
 
 </html>

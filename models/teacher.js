@@ -60,11 +60,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     rating : {
       type: DataTypes.INTEGER,
-      defaultValue: 0,
-      validate: {
-        min: {args: 1, msg:`rating must between 1 - 5`},
-        max: {args: 5, msg:`rating must between 1 - 5`}
-      }
+      defaultValue: 0
     },
     totalReview : {
       type: DataTypes.INTEGER,
