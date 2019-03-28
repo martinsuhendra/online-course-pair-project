@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+        <% include ./partials/head %>
+
+	<body class="header-collapse">
+
+		<div id="site-content">
+
+            <header class="site-header">
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+                <div class="container">
+                    <a href="index.html" id="branding" style="color: orange">
+                        <i class="fas fa-guitar" > Classic</i>
+                    <small class="site-description">`start your music skill right through your door`</small>
+                    </a> <!-- #branding -->
+                    
+                    <nav class="main-navigation">
+                    <button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <% if(locals.login) { %>
+                        <li class="menu-item"><a href="/">Home</a></li>
+                        <li class="menu-item current-menu-item"><a href="/dashboard">DashBoard</a></li>
+                        <li class="menu-item"><a href="/session">Session</a></li>
+                        <li class="menu-item"><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                        <li class="menu-item"><a href="/login">Login</a></li>
+                        <li class="menu-item"><a href="/register">Sign Up</a></li>
+                        <% } %>
+                    </ul> <!-- .menu -->
+                    </nav> <!-- .main-navigation -->
+                    <div class="mobile-menu"></div>
+                </div>
+            </header> <!-- .site-header -->
+
+			<main class="main-content" style="margin-top:10%">
+				<div class="row">
+					<div class="container-fluid">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+                            <center>
+                                <h1>Teacher Appointment</h1>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <th> Id</th>
+                                        <th> Student Name</th>
+                                        <th> Gender</th>
+                                        <th> Date</th>
+                                        <th> Email</th>
+                                        <th> Status</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <% schedules.forEach(schedule => { %>
+                                            <td><%= schedule.id %></td>
+                                            <td><%= getFullName(schedule.Student.first_name, schedule.Student.last_name) %></td>
+                                            <td><%= schedule.Student.gender %></td>
+                                            <td><%= getDate(schedule.date) %></td>
+                                            <td><%= schedule.Student.email %></td>
+                                            <form method="POST" action="/dashboard/<%= schedule.id %>/update-status" class="form-horizontal">
+                                                <td>
+                                                    <div class="form-group">
+                                                        <select name="status" class="form-control col-md-8">
+                                                            <% if(schedule.status == 'pending'){ %>
+                                                                <option value="pending" selected>pending</option>
+                                                                <option value="confirmed">confirmed</option>
+                                                                <option value="reject">reject</option>
+                                                            <% } else if(schedule.status == 'confirmed'){ %>
+                                                                <option value="pending">pending</option>
+                                                                <option value="confirmed" selected>confirmed</option>
+                                                                <option value="reject">reject</option>
+                                                            <% } else { %>
+                                                                <option value="pending" >pending</option>
+                                                                <option value="confirmed">confirmed</option>
+                                                                <option value="reject" selected>reject</option>
+                                                            <% } %>
+                                                        </select>
+                                                        <button type="submit" class="btn btn-success col-md-4">submit</button
+                                                    </div>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </center>
+
+						<div class="col-md-2"></div>
+
+					</div>
+                </div>
+            </div>
+			</main> <!-- .main-content -->
+
+		<% include ./partials/footer %>
+
+		</div> <!-- #site-content -->
+
+        <% include ./partials/script-js %>
+
+	</body>
+
+</html>

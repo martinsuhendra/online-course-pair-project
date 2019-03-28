@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ./partials/head %>
+
+<body class="header-collapse">
+
+    <div id="site-content">
+
+        <header class="site-header">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+            <div class="container">
+                <a href="/" id="branding" style="color: orange">
+                    <i class="fas fa-guitar" > Classic</i>
+                <small class="site-description">`start your music skill right through your door`</small>
+                </a> <!-- #branding -->
+                
+                <nav class="main-navigation">
+                <button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
+                <ul class="menu">
+                    <% if(locals.login) { %>
+                    <li class="menu-item"><a href="/">Home</a></li>
+                    <li class="menu-item"><a href="/dashboard">DashBoard</a></li>
+                    <li class="menu-item current-menu-item"><a href="/session">Session</a></li>
+                    <li class="menu-item"><a href="/logout">Logout</a></li>
+                    <% } else { %>
+                    <li class="menu-item"><a href="/login">Login</a></li>
+                    <li class="menu-item"><a href="/register">Sign Up</a></li>
+                    <% } %>
+                </ul> <!-- .menu -->
+                </nav> <!-- .main-navigation -->
+                <div class="mobile-menu"></div>
+            </div>
+        </header> <!-- .site-header -->
+
+        <main class="main-content" style="margin-top:10%">
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <center>
+                            <h1>The Mentors</h1>
+                            <form method="POST" action="/search">
+                                <div class="form-group" style="float:right">
+                                    <input type="text" name="tags"><button type="submit" style="float:right">Search</button> <br>
+                                </div>
+                            </form>
+                            <br>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>Email</th>
+                                        <th>Instrument</th>
+                                        <th>Rating</th>
+                                        <th>Option</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <% teachers.forEach(teacher => { %>
+                                        <td><%= teacher.getFullName() %></td>
+                                        <td><%= teacher.gender %></td>
+                                        <td><%= teacher.email %></td>
+                                        <td><%= teacher.instrument %></td>
+                                        <% if(!teacher.rating){ %>
+                                        <td>no review</td>
+                                        <% } else { %>
+                                        <td><%= teacher.rating %></td>
+                                        <% } %>
+                                        <td><a href="/session/<%= teacher.id %>">Make appointment</a></td>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                            <br>
+                        </center>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </main> <!-- .main-content -->
+
+        <% include ./partials/footer %>
+
+    </div> <!-- #site-content -->
+
+    <% include ./partials/script-js %>
+
+</body>
+
+</html>

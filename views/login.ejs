@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ./partials/head %>
+
+<body class="header-collapse">
+
+    <div id="site-content">
+
+        <header class="site-header">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+                integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+                crossorigin="anonymous">
+            <div class="container">
+                <a href="/" id="branding" style="color: orange">
+                    <i class="fas fa-guitar"> Classic</i>
+
+                    <small class="site-description">`start your music skill right through your door`</small>
+                </a> <!-- #branding -->
+
+                <nav class="main-navigation">
+                    <button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
+                    <ul class="menu">
+                        <% if(locals.login) { %>
+                        <li class="menu-item"><a href="/">Home</a></li>
+                        <li class="menu-item"><a href="/dashboard">DashBoard</a></li>
+                        <li class="menu-item"><a href="/session">Session</a></li>
+                        <li class="menu-item"><a href="/logout">Logout</a></li>
+                        <% } else { %>
+                        <li class="menu-item current-menu-item"><a href="/login">Login</a></li>
+                        <li class="menu-item"><a href="/register">Sign Up</a></li>
+                        <% } %>
+                    </ul> <!-- .menu -->
+                </nav> <!-- .main-navigation -->
+                <div class="mobile-menu"></div>
+            </div>
+        </header> <!-- .site-header -->
+
+        <div class="hero">
+            <div class="slider">
+                <ul class="slides">
+                    <li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+                        <div class="container">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <h1 style="margin-top:3%">Login</h1>
+                                <form method="POST" class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="email" class="control-label">Email:</label>
+                                        <input type="text" name="email" value="" class="form-control"
+                                            placeholder="Your Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="control-label">Password:</label>
+                                        <input type="password" name="password" value="" class="form-control"
+                                            placeholder="Your Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="role" class="control-label">Role:</label>
+                                        <select name="role" class="form-control">
+                                            <option value="student">Student</option>
+                                            <option value="teacher">Teacher</option>
+                                        </select>
+                                    </div><br>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success form-control">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div> <!-- #site-content -->
+
+    <% include ./partials/script-js %>
+
+</body>
+
+</html>
