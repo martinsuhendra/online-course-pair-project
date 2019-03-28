@@ -36,7 +36,7 @@ router.get('/', (req, res)=> {
     }
 
     router.post('/:id/update-status',(req,res)=> {
-        res.send(req.body)
+        // res.send(req.body)
         TeacherStudent.update({
             status : req.body.status
         },{
@@ -46,7 +46,7 @@ router.get('/', (req, res)=> {
         })
         .then(()=> {
             // res.send(data)
-            res.redirect(`/`)
+            res.redirect('/')
         })
         .catch((err)=> {
             res.send(err)
@@ -55,20 +55,34 @@ router.get('/', (req, res)=> {
 })
 
 router.post('/:id/give-rate', (req, res) => {
-    // res.send(req.body)
-    TeacherStudent.update({
-        teacherRating: true
-    }, {
-        where: {
-            id: req.params.id
-        }
-    })
+    // res.send(typeof(req.body.rating))
+    TeacherStudent.findByPk(req.params.id)
+        .then(schedule => {
+            return schedule.update({
+                teacherRating: true
+            }, {
+                rating: Number(req.body.rating)
+            })
+        })
         .then(() => {
             res.redirect('/dashboard')
         })
         .catch(err => {
             res.send(err.message)
         })
+    // TeacherStudent.update({
+    //     teacherRating: true
+    // }, {
+    //     where: {
+    //         id: req.params.id
+    //     }
+    // })
+    //     .then(() => {
+    //         res.redirect('/dashboard')
+    //     })
+    //     .catch(err => {
+    //         res.send(err.message)
+    //     })
 })
 
 
