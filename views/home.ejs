@@ -6,7 +6,31 @@
 
 		<div id="site-content">
 
-        <% include ./partials/header %>
+			<header class="site-header">
+				<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+				<div class="container">
+					<a href="index.html" id="branding" style="color: orange">
+						<i class="fas fa-guitar" > Classic</i>
+					<small class="site-description">`start your music skill right through your door`</small>
+					</a> <!-- #branding -->
+					
+					<nav class="main-navigation">
+					<button type="button" class="toggle-menu"><i class="fa fa-bars"></i></button>
+					<ul class="menu">
+						<% if(locals.login) { %>
+						<li class="menu-item current-menu-item"><a href="/">Home</a></li>
+						<li class="menu-item"><a href="/dashboard">DashBoard</a></li>
+						<li class="menu-item"><a href="/session">Session</a></li>
+						<li class="menu-item"><a href="/logout">Logout</a></li>
+						<% } else { %>
+						<li class="menu-item"><a href="/login">Login</a></li>
+						<li class="menu-item"><a href="/register">Sign Up</a></li>
+						<% } %>
+					</ul> <!-- .menu -->
+					</nav> <!-- .main-navigation -->
+					<div class="mobile-menu"></div>
+				</div>
+			</header> <!-- .site-header -->
 
 			<div class="hero">
 				<div class="slider">

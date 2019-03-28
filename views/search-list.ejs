@@ -15,6 +15,11 @@
                     <div class="col-md-8">
                         <center>
                             <h1>The Mentors</h1>
+                            <form method="POST" action="/search">
+                                <div class="form-group" style="float:right">
+                                    <input type="text" name="tags"><button type="submit" style="float:right">Search</button> <br>
+                                </div>
+                            </form>
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -44,9 +49,9 @@
                                 </tbody>
                             </table>
                             <br>
-                            <form method="POST" action="/search">
+                            <!-- <form method="POST" action="/search">
                                 <input type="text" name="tags"><button type="submit">Search</button>
-                            </form>
+                            </form> -->
                         </center>
                     </div>
                     <div class="col-md-2"></div>
