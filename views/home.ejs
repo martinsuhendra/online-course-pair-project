@@ -1,32 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome Page</title>
-</head>
-<body>
-    <% include ./partials/nav-bar.ejs %>
-    <center>
-            <h1>Our Best Mentors</h1>
-            <br>
-        <table rules=rows cellpadding=10>
-            <thead>
-                <th>Rank</th>
-                <th>Name</th>
-                <th>Instrument</th>
-                <th>Rating</th>
-            </thead>
-            <tr>
-                <% teachers.forEach((teacher, idx)=> { %>
-                    <td><%= idx + 1 %></td>
-                    <td><%= teacher.getFullName() %></td>
-                    <td><%= teacher.instrument %></td>
-                    <td><%= teacher.rating %></td>
-            </tr>
-            <% }) %>
-        </table>
-    </center>
-</body>
+        <% include ./partials/head %>
+
+	<body class="header-collapse">
+		
+		<div id="site-content">
+		<% include ./partials/header %>
+			
+			<div class="hero">
+				<div class="slider">
+					<ul class="slides">
+						<li class="lazy-bg" data-background="./dummy/slide-1.jpg">
+							<div class="container">
+								<h2 class="slide-title">Header goes here</h2>
+								<h3 class="slide-subtitle">Less important text goes here</h3>
+								<p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-2.jpg">
+							<div class="container">
+									<h2 class="slide-title">Header goes here</h2>
+									<h3 class="slide-subtitle">Less important text goes here</h3>
+									<p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+
+							</div>
+						</li>
+						<li class="lazy-bg" data-background="./dummy/slide-3.jpg">
+							<div class="container">
+									<h2 class="slide-title">Header goes here</h2>
+									<h3 class="slide-subtitle">Less important text goes here</h3>
+									<p class="slide-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. <br>Fugiat aliquid minus nemo sed est.</p>
+
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<main class="main-content">
+				<div class="row">
+					<div class="container-fluid">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+                            <center>
+                                <h1>Our Best Mentors</h1>
+                                <br>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <th>Rank</th>
+                                        <th>Name</th>
+                                        <th>Instrument</th>
+                                        <th>Rating</th>
+                                    </thead>
+                                    <tr>
+                                    <% teachers.forEach((teacher, idx)=> { %>
+                                        <td><%= idx + 1 %></td>
+                                        <td><%= teacher.getFullName() %></td>
+                                        <td><%= teacher.instrument %></td>
+                                        <td><%= teacher.rating %></td>
+                                    </tr>
+                                    <% }) %>
+                                </table>
+                            </center>
+						<div class="col-md-2"></div>
+
+					</div>
+				</div>
+			
+			</main> <!-- .main-content -->
+
+		<% include ./partials/footer %>
+			
+
+		</div> <!-- #site-content -->
+
+		<% include ./partials/script-js %>
+		
+	</body>
+
 </html>

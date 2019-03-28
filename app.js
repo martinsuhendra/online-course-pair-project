@@ -13,6 +13,9 @@ const dashboardRoutes = require('./routes/dashboard')
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extends: true}))
 app.use(express.static(__dirname + '/public'))
+app.use("*/css",express.static("public/css"));
+app.use('*/js',express.static("public/js"));
+app.use("*/images",express.static("public/images"))
 //----SESSION INIT------------
 app.use(session({
     secret: 'somerandonstuffs',
