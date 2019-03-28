@@ -3,7 +3,8 @@ const {Teacher} = require('../models')
 
 router.get('/',(req,res) => {
     Teacher.findAll({
-        order: [['rating','DESC']]
+        order: [['rating','DESC']],
+        limit: 3
     })
     .then((teachers)=> {
         // res.send(teachers)
