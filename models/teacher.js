@@ -65,7 +65,8 @@ module.exports = (sequelize, DataTypes) => {
         min: {args: 1, msg:`rating must between 1 - 5`},
         max: {args: 5, msg:`rating must between 1 - 5`}
       }
-    }
+    },
+    totalReview: DataTypes.INTEGER
   }, {
     hooks: {
       beforeCreate(teacher) {

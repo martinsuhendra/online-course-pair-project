@@ -23,7 +23,13 @@ module.exports = (sequelize, DataTypes) => {
         schedule.date = schedule.date
       },
       afterUpdate(instance, option) {
-        instance.teacherRating = true
+        return sequelize.models.Teacher.findByPk(instance.TeacherId)
+          .then((teacher)=> {
+            return teacher.update({
+              totalReview : +teacher.totalReview + 1,
+              rating: Math.floor((Number(teacher.rating)+ Number(option.rating)) / Number(teacher.totalReview+1))
+            })
+          })
       }
     }
   });
