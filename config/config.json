@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "postgres",
-    "database": "online-course",
+    "database": "online-course-new",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
